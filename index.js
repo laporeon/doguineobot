@@ -57,19 +57,6 @@ bot.action('no', (ctx) => {
   );
 });
 
-bot.command('stop', (ctx) => {
-  bot.telegram.sendMessage(
-    ctx.chat.id,
-    `Muito obrigado por ter usado meu bot. Para recomeçar, digite /start a qualquer momento.`,
-    {}
-  );
-  setInterval(() => {
-    bot.stop(() => {
-      bot.launch({ polling: { timeout: 1 } });
-    });
-  }, 3000);
-});
-
 bot.launch({ polling: { timeout: 1 } });
 
 app
