@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 bot.command('start', (ctx) => {
+  bot.launch();
   console.log(ctx.from);
   bot.telegram.sendMessage(
     ctx.chat.id,
