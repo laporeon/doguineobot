@@ -9,7 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 bot.command('start', (ctx) => {
-  bot.launch();
   console.log(ctx.from);
   bot.telegram.sendMessage(
     ctx.chat.id,
@@ -64,10 +63,14 @@ bot.command('stop', (ctx) => {
     `Muito obrigado por ter usado meu bot. Para recomeçar, digite /start a qualquer momento.`,
     {}
   );
-  bot.stop();
+  setInterval(() => {
+    bot.stop(() => {
+      bot.launch({ polling: { timeout: 1 } });
+    });
+  }, 3000);
 });
 
-bot.launch();
+bot.launch({ polling: { timeout: 1 } });
 
 app
   .get('/', function (request, response) {
