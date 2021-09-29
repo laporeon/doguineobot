@@ -9,7 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 bot.command('start', (ctx) => {
-  console.log(ctx.from);
   bot.telegram.sendMessage(
     ctx.chat.id,
     `Olá, ${ctx.chat.first_name}! Seja bem-vinde ao Doguíneo. Para receber fotos, digite /doguinho`,
